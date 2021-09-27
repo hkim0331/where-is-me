@@ -5,6 +5,10 @@ where is hkimura, now?
 ## Unreleased
 * HTML
 
+## 0.2.1 - 2021-09-27
+* get /version
+* get / returns HTML
+* get /find returns JSON
 
 ## 0.2.0 - 2021-09-27
 ### Added boundary.locations.clj
