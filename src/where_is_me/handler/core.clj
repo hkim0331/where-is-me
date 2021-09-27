@@ -3,19 +3,28 @@
             [ataraxy.response :as response]
             [integrant.core :as ig]
             ;;
-            [where-is-me.boundary.locations :as locs]))
+            [clojure.string :as str]
+            [where-is-me.boundary.locations :as locs]
+            [where-is-me.view :as view]))
 
-(def ^:private version "0.2.1")
+(def ^:private version "0.2.2")
 
 (defmethod ig/init-key :where-is-me.handler.core/version [_ _]
   (fn [_]
     [::response/ok {:version version}]))
 
+(defn- shorten [ts]
+  (let [[time date] (str/split ts #"\s")]
+    (apply str (concat (drop 5 time) " " (take 5 date)))))
+
 (defmethod ig/init-key :where-is-me.handler.core/html [_ {:keys [db]}]
   (fn [_]
-    (let [{:keys [location timestamp]} (locs/find-loc db)]
-      [::response/ok (str "<h2>hkimura は今、</h2>"
-                          "<p>" timestamp ", " location "</p>")])))
+    (let [{:keys [timestamp location]} (locs/find-loc db)]
+       (view/html
+        [:h4 "himura は今、"]
+        [:div (shorten timestamp) ", " location]
+        [:hr]
+        [:div "w.hkim.jp"]))))
 
 (defmethod ig/init-key :where-is-me.handler.core/create [_ {:keys [db]}]
   (fn [{[_ loc] :ataraxy/result}]

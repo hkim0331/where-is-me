@@ -3,7 +3,17 @@
 where is hkimura, now?
 
 ## Unreleased
-* HTML
+
+## 0.2.2 - 2021-09-27
+### Changed
+endpoints changed.
+* get /
+* get /loc
+* get /locs
+* get /locs/yyyy-mm
+* get /html
+* get /version
+`post /` was not changed.
 
 ## 0.2.1 - 2021-09-27
 * get /version

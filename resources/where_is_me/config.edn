@@ -12,18 +12,18 @@ timestamp TIMESTAMP DEFAULT (datetime('now','localtime')))"]
    :down ["DROP TABLE locations"]}
 
   :duct.router/ataraxy
-  {:routes {[:get "/example"] [:where-is-me.handler/example]
+  {:routes {;;[:get "/example"] [:where-is-me.handler/example]
             ;;
             [:post "/" {{:keys [loc]} :body-params}]
             [:where-is-me.handler.core/create loc]
 
             [:get "/"]            [:where-is-me.handler.core/html]
-            [:get "/version"]     [:where-is-me.handler.core/version]
+            [:get "/loc"]        [:where-is-me.handler.core/find]
+            [:get "/locs"]        [:where-is-me.handler.core/lists]
+            [:get "/locs/" param] [:where-is-me.handler.core/list param]
 
-            [:get "/find"]        [:where-is-me.handler.core/find]
+            [:get "/version"]     [:where-is-me.handler.core/version]}}
 
-            [:get "/list"]        [:where-is-me.handler.core/lists]
-            [:get "/list/" param] [:where-is-me.handler.core/list param]}}
 
   :where-is-me.handler/example {:db #ig/ref :duct.database/sql}
 
