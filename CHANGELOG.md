@@ -3,13 +3,20 @@
 where is hkimura, now?
 
 ## Unreleased
-- メソッドの実装
+* HTML
+
+
+## 0.2.0 - 2021-09-27
+### Added boundary.locations.clj
+### Fixme
+* jdbc で `timestamp like ?%` を実行したいが、できねー。
+  現在は like ? なしで受け取ったベクタをフィルタしている。
 
 ## 0.1.0 - 2021-09-27
 * インタフェースだけ。/lists と /list/yyyy-mm の辺がわかりにくいか。
   * post / -- 現在地を記録
   * get  / -- 今日はどこにいるかを表示
-  * get  /lists -- 全てのデータを表示
+  * get  /list -- 全てのデータを表示
   * get  /list/yyyy-mm -- yyyy-mm にマッチするデータを表示
 
 ## was

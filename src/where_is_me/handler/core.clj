@@ -1,22 +1,22 @@
 (ns where-is-me.handler.core
   (:require [ataraxy.core :as ataraxy]
             [ataraxy.response :as response]
-            [integrant.core :as ig]))
+            [integrant.core :as ig]
+            ;;
+            [where-is-me.boundary.locations :as locs]))
 
-(defmethod ig/init-key :where-is-me.handler.core/create [_ options]
-  (fn [{[_ {:keys [loc]}] :ataraxy/result}]
-    [::response/ok {:core "create"
-                    :loc loc}]))
+(defmethod ig/init-key :where-is-me.handler.core/create [_ {:keys [db]}]
+  (fn [{[_ loc] :ataraxy/result}]
+   [::response/ok (locs/create db loc)]))
 
-(defmethod ig/init-key :where-is-me.handler.core/find [_ options]
+(defmethod ig/init-key :where-is-me.handler.core/find [_ {:keys [db]}]
   (fn [_]
-    [::response/ok {:core "find"}]))
+    [::response/ok (locs/find db)]))
 
-(defmethod ig/init-key :where-is-me.handler.core/list [_ options]
+(defmethod ig/init-key :where-is-me.handler.core/list [_ {:keys [db]}]
   (fn [{[_ params] :ataraxy/result}]
-    [::response/ok {:core "list"
-                    :params params}]))
+    [::response/ok (locs/list db params)]))
 
-(defmethod ig/init-key :where-is-me.handler.core/lists [_ options]
+(defmethod ig/init-key :where-is-me.handler.core/lists [_ {:keys [db]}]
   (fn [_]
-    [::response/ok {:core "lists"}]))
+    [::response/ok (locs/lists db)]))
