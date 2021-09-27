@@ -7,7 +7,7 @@
             [where-is-me.boundary.locations :as locs]
             [where-is-me.view :as view]))
 
-(def ^:private version "0.2.1")
+(def ^:private version "0.2.2")
 
 (defmethod ig/init-key :where-is-me.handler.core/version [_ _]
   (fn [_]
