@@ -6,31 +6,29 @@
    [duct.database.sql]
    [integrant.core :as ig]))
 
-(defn now []
-  (.format (java.text.SimpleDateFormat. "MM/dd HH:mm") (java.util.Date.)))
 
 (defprotocol Locations
- (create [db loc])
- (find [db])
- (list [db pat])
- (lists [db]))
+ (create-loc [db loc])
+ (find-loc [db])
+ (list-loc [db pat])
+ (lists-loc [db]))
 
 (extend-protocol Locations
   duct.database.sql.Boundary
-  (create [{db :spec} loc]
+  (create-loc [{db :spec} loc]
           (let [ret (jdbc/insert! db :locations {:location loc})]
             (-> ret first)))
 
-  (find [{db :spec}]
+  (find-loc [{db :spec}]
         (let [ret (jdbc/query db ["select * from locations order by id desc"])]
           (-> ret first)))
 
   ;; FIXME: want to use `like ?%`
-  (list [{db :spec} pat]
+  (list-loc [{db :spec} pat]
         (let [ret (jdbc/query db ["select * from locations order by id"])]
           (->> ret
                (filter #(starts-with? (:timestamp %) pat)))))
 
-  (lists [{db :spec}]
+  (lists-loc [{db :spec}]
          (let [ret (jdbc/query db ["select * from locations order by id"])]
            ret)))

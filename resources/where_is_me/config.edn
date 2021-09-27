@@ -17,12 +17,19 @@ timestamp TIMESTAMP DEFAULT (datetime('now','localtime')))"]
             [:post "/" {{:keys [loc]} :body-params}]
             [:where-is-me.handler.core/create loc]
 
-            [:get "/"]            [:where-is-me.handler.core/find]
+            [:get "/"]            [:where-is-me.handler.core/html]
+            [:get "/version"]     [:where-is-me.handler.core/version]
+
+            [:get "/find"]        [:where-is-me.handler.core/find]
+
             [:get "/list"]        [:where-is-me.handler.core/lists]
             [:get "/list/" param] [:where-is-me.handler.core/list param]}}
 
   :where-is-me.handler/example {:db #ig/ref :duct.database/sql}
-  ;;
+
+  :where-is-me.handler.core/version {}
+
+  :where-is-me.handler.core/html   {:db #ig/ref :duct.database/sql}
   :where-is-me.handler.core/create {:db #ig/ref :duct.database/sql}
   :where-is-me.handler.core/find   {:db #ig/ref :duct.database/sql}
   :where-is-me.handler.core/list   {:db #ig/ref :duct.database/sql}
