@@ -3,13 +3,14 @@
 where is hkimura, now?
 
 ## Unreleased
-- post / -- 現在地を記録
-- get  / -- 今日はどこにいるかを表示
-- get  /list -- 全てのデータを表示
-- get  /list/yyyy-mm -- yyyy-mm にマッチするデータを表示
+- メソッドの実装
 
-## 0.2.0-SNAPSHOT
-
+## 0.1.0 - 2021-09-27
+* インタフェースだけ。/lists と /list/yyyy-mm の辺がわかりにくいか。
+  * post / -- 現在地を記録
+  * get  / -- 今日はどこにいるかを表示
+  * get  /lists -- 全てのデータを表示
+  * get  /list/yyyy-mm -- yyyy-mm にマッチするデータを表示
 
 ## was
 
