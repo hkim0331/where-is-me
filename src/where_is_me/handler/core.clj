@@ -9,7 +9,6 @@
   (fn [{[_ loc] :ataraxy/result}]
    [::response/ok (locs/create db loc)]))
 
-
 (defmethod ig/init-key :where-is-me.handler.core/find [_ {:keys [db]}]
   (fn [_]
     [::response/ok (locs/find db)]))

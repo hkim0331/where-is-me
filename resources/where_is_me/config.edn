@@ -8,7 +8,7 @@
   {:up ["CREATE TABLE locations (
 id INTEGER PRIMARY KEY,
 location TEXT,
-timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP)"]
+timestamp TIMESTAMP DEFAULT (datetime('now','localtime')))"]
    :down ["DROP TABLE locations"]}
 
   :duct.router/ataraxy
@@ -18,8 +18,8 @@ timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP)"]
             [:where-is-me.handler.core/create loc]
 
             [:get "/"]            [:where-is-me.handler.core/find]
-            [:get "/list/" param] [:where-is-me.handler.core/list param]
-            [:get "/lists"]       [:where-is-me.handler.core/lists]}}
+            [:get "/list"]        [:where-is-me.handler.core/lists]
+            [:get "/list/" param] [:where-is-me.handler.core/list param]}}
 
   :where-is-me.handler/example {:db #ig/ref :duct.database/sql}
   ;;
