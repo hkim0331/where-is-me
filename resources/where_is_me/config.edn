@@ -14,14 +14,12 @@ timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP)"]
   :duct.router/ataraxy
   {:routes {[:get "/example"] [:where-is-me.handler/example]
             ;;
-            [:post "/" {loc :body-params}]
+            [:post "/" {{:keys [loc]} :body-params}]
             [:where-is-me.handler.core/create loc]
 
-            [:get "/"] [:where-is-me.handler.core/find]
-
+            [:get "/"]            [:where-is-me.handler.core/find]
             [:get "/list/" param] [:where-is-me.handler.core/list param]
-
-            [:get "/lists"] [:where-is-me.handler.core/lists]}}
+            [:get "/lists"]       [:where-is-me.handler.core/lists]}}
 
   :where-is-me.handler/example {:db #ig/ref :duct.database/sql}
   ;;
