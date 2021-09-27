@@ -6,12 +6,12 @@
 
 ## was
 
-whereabouts という名前でローカルリポジトリに作っていた。
+whereabouts という名前で melt ローカルリポジトリに作っていた。
 
 ssh://git@git.melt.kyutech.ac.jp/git/whereabouts.git
 
 ## Legal
 
-Copyright © 2020 hiroshi.kimura.0331@gmail.com
+Copyright © 2021 hiroshi.kimura.0331@gmail.com
 
 
