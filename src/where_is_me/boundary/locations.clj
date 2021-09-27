@@ -2,6 +2,7 @@
   (:require
    [ataraxy.response :as response]
    [clojure.java.jdbc :as jdbc]
+   [clojure.string :refer [starts-with?]]
    [duct.database.sql]
    [integrant.core :as ig]))
 
@@ -17,17 +18,19 @@
 (extend-protocol Locations
   duct.database.sql.Boundary
   (create [{db :spec} loc]
-    (let [ret (jdbc/insert! db :locations {:location loc})]
-      (-> ret first)))
+          (let [ret (jdbc/insert! db :locations {:location loc})]
+            (-> ret first)))
+
   (find [{db :spec}]
-    (let [ret (jdbc/query db ["select * from locations order by id desc"])]
-     (-> ret first)))
+        (let [ret (jdbc/query db ["select * from locations order by id desc"])]
+          (-> ret first)))
+
+  ;; FIXME: want to use `like ?%`
   (list [{db :spec} pat]
-   (let [ret (jdbc/query
-              db
-              ["select * from locations where timestamp like ?"]
-              (str "%" pat "%"))]
-     ret))
+        (let [ret (jdbc/query db ["select * from locations order by id"])]
+          (->> ret
+               (filter #(starts-with? (:timestamp %) pat)))))
+
   (lists [{db :spec}]
-   (let [ret (jdbc/query db ["select * from locations order by id"])]
-    ret)))
+         (let [ret (jdbc/query db ["select * from locations order by id"])]
+           ret)))
