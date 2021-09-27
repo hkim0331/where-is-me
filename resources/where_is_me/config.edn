@@ -1,18 +1,39 @@
 {:duct.profile/base
  {:duct.core/project-ns where-is-me
 
-  :duct.router/ataraxy
-  {:routes {[:get "/example"] [:where-is-me.handler/example]}}
+  :duct.migrator/ragtime
+  {:migrations [#ig/ref :where-is-me.migration/create-locations]}
 
-  :where-is-me.handler/example
-  {:db #ig/ref :duct.database/sql}}
+  [:duct.migrator.ragtime/sql :where-is-me.migration/create-locations]
+  {:up ["CREATE TABLE locations (
+id INTEGER PRIMARY KEY,
+location TEXT,
+timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP)"]
+   :down ["DROP TABLE locations"]}
+
+  :duct.router/ataraxy
+  {:routes {[:get "/example"] [:where-is-me.handler/example]
+            ;;
+            [:post "/" {loc :body-params}]
+            [:where-is-me.handler.core/create loc]
+
+            [:get "/"] [:where-is-me.handler.core/find]
+
+            [:get "/list/" param] [:where-is-me.handler.core/list param]
+
+            [:get "/lists"] [:where-is-me.handler.core/lists]}}
+
+  :where-is-me.handler/example {:db #ig/ref :duct.database/sql}
+  ;;
+  :where-is-me.handler.core/create {:db #ig/ref :duct.database/sql}
+  :where-is-me.handler.core/find   {:db #ig/ref :duct.database/sql}
+  :where-is-me.handler.core/list   {:db #ig/ref :duct.database/sql}
+  :where-is-me.handler.core/lists  {:db #ig/ref :duct.database/sql}}
 
  :duct.profile/dev   #duct/include "dev"
  :duct.profile/local #duct/include "local"
  :duct.profile/prod  {}
 
  :duct.module/logging {}
- :duct.module.web/api
- {}
- :duct.module/sql
- {}}
+ :duct.module.web/api {}
+ :duct.module/sql {}}
