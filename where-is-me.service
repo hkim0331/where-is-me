@@ -1,0 +1,14 @@
+[Unit]
+Description = where is hkimura, now?
+After       = network-online.target
+
+[Service]
+WorkingDirectory = /srv/w/
+ExecStart = /bin/sh start.sh
+ExecStop  = /bin/sh stop.sh
+Type      = simple
+User      = ubuntu
+Restart   = always
+
+[Install]
+WantedBy = multi-user.target
