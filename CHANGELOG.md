@@ -3,6 +3,11 @@
 where is hkimura, now?
 
 ## Unreleased
+* auth or password?
+  httpie's session?
+
+  http --session=ses https://w.hkim.jp loc=home API-Token:123
+
 
 ## 0.2.2 - 2021-09-27
 ### Changed
@@ -13,6 +18,7 @@ endpoints changed.
 * get /locs/yyyy-mm
 * get /html
 * get /version
+
 `post /` was not changed.
 
 ## 0.2.1 - 2021-09-27
@@ -71,5 +77,7 @@ server
 * http post :3000/ loc=whereabouts
 
 ## Legal
+
+Copy free.
 
 Copyright © 2021 hiroshi.kimura.0331@gmail.com
