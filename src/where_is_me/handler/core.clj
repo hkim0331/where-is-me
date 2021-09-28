@@ -1,9 +1,7 @@
 (ns where-is-me.handler.core
-  (:require [ataraxy.core :as ataraxy]
-            [ataraxy.response :as response]
+  (:require [ataraxy.response :as response]
             [integrant.core :as ig]
             ;;
-            [clojure.string :as str]
             [where-is-me.boundary.locations :as locs]
             [where-is-me.view :as view]))
 
@@ -13,9 +11,16 @@
   (fn [_]
     [::response/ok {:version version}]))
 
+;; lazy-seq returns
+;; (defn- shorten [ts]
+;;   (let [[time date] (clojure.string/split ts #"\s")]
+;;     (str (drop 5 time)
+;;          " "
+;;          (take 5 date))))
+
+;; FIXME: dirty
 (defn- shorten [ts]
-  (let [[time date] (str/split ts #"\s")]
-    (apply str (concat (drop 5 time) " " (take 5 date)))))
+ (str (subs ts 5 7) "/" (subs ts 8 10) " " (subs ts 11 16)))
 
 (defmethod ig/init-key :where-is-me.handler.core/html [_ {:keys [db]}]
   (fn [_]
