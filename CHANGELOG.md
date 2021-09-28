@@ -6,8 +6,11 @@ where is hkimura, now?
 * auth or password?
   httpie's session?
 
-  http --session=ses https://w.hkim.jp loc=home API-Token:123
+  http --session=ses https://w.hkim.jp/ loc=home API-Token:123
 
+  see ~/.config/httpie/sessions
+
+## 0.2.3-SNAPSHOT
 
 ## 0.2.2 - 2021-09-27
 ### Changed
