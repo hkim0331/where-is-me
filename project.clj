@@ -8,7 +8,9 @@
                  [duct/module.logging "0.5.0"]
                  [duct/module.sql "0.6.1"]
                  [duct/module.web "0.7.3"]
-                 [org.xerial/sqlite-jdbc "3.36.0.3"]]
+                 [org.xerial/sqlite-jdbc "3.36.0.3"]
+                 ;;
+                 [environ "1.2.0"]]
   :plugins [[duct/lein-duct "0.12.3"]]
   :main ^:skip-aot where-is-me.main
   :resource-paths ["resources" "target/resources"]

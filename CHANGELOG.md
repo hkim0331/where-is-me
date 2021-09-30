@@ -3,12 +3,11 @@
 where is hkimura, now?
 
 ## Unreleased
-* auth or password?
-  httpie's session?
 
-  http --session=ses https://w.hkim.jp/ loc=home API-Token:123
-
-  see ~/.config/httpie/sessions
+## 0.2.4
+### Added
+* session by using httpie facility.
+  must keep ~/.config/httpie/sessions secretly.
 
 ## 0.2.3 - 2021-09-30
 * works without auth.

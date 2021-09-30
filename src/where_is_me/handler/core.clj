@@ -2,6 +2,7 @@
   (:require [ataraxy.response :as response]
             [integrant.core :as ig]
             ;;
+            [environ.core :refer [env]]
             [where-is-me.boundary.locations :as locs]
             [where-is-me.view :as view]))
 
@@ -34,7 +35,8 @@
 (defmethod ig/init-key :where-is-me.handler.core/create [_ {:keys [db]}]
   (fn [{:as req [_ loc] :ataraxy/result}]
     (try
-      (when (= "secret" (get-in req [:headers "auth-token"]))
+      (when (= (or (env :auth-token) "zzz")
+               (get-in req [:headers "auth-token"]))
         [::response/ok (locs/create-loc db loc)])
       (catch Exception e
         [::response/unauthorized (.getMessage e)]))))
