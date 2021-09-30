@@ -7,5 +7,5 @@ URL="https://API.add.ress"
 if [ -z "$1" ]; then
   http --body ${URL}/loc
 else
-  http --body ${URL}/ loc="$*"
+  http --session where-is-me --body ${URL}/ loc="$*"
 fi

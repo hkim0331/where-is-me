@@ -32,8 +32,12 @@
         [:div "w.hkim.jp"]))))
 
 (defmethod ig/init-key :where-is-me.handler.core/create [_ {:keys [db]}]
-  (fn [{[_ loc] :ataraxy/result}]
-    [::response/ok (locs/create-loc db loc)]))
+  (fn [{:as req [_ loc] :ataraxy/result}]
+    (try
+      (when (= "secret" (get-in req [:headers "auth-token"]))
+        [::response/ok (locs/create-loc db loc)])
+      (catch Exception e
+        [::response/unauthorized (.getMessage e)]))))
 
 (defmethod ig/init-key :where-is-me.handler.core/find [_ {:keys [db]}]
   (fn [_]
