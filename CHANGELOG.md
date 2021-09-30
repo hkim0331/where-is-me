@@ -10,7 +10,8 @@ where is hkimura, now?
 
   see ~/.config/httpie/sessions
 
-## 0.2.3-SNAPSHOT
+## 0.2.3 - 2021-09-30
+* works without auth.
 
 ## 0.2.2 - 2021-09-27
 ### Changed
