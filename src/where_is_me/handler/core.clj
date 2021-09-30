@@ -2,10 +2,11 @@
   (:require [ataraxy.response :as response]
             [integrant.core :as ig]
             ;;
+            [environ.core :refer [env]]
             [where-is-me.boundary.locations :as locs]
             [where-is-me.view :as view]))
 
-(def ^:private version "0.2.3")
+(def ^:private version "0.2.4")
 
 (defmethod ig/init-key :where-is-me.handler.core/version [_ _]
   (fn [_]
@@ -32,8 +33,13 @@
         [:div "w.hkim.jp"]))))
 
 (defmethod ig/init-key :where-is-me.handler.core/create [_ {:keys [db]}]
-  (fn [{[_ loc] :ataraxy/result}]
-    [::response/ok (locs/create-loc db loc)]))
+  (fn [{:as req [_ loc] :ataraxy/result}]
+    (try
+      (when (= (or (env :auth-token) "zzz")
+               (get-in req [:headers "auth-token"]))
+        [::response/ok (locs/create-loc db loc)])
+      (catch Exception e
+        [::response/unauthorized (.getMessage e)]))))
 
 (defmethod ig/init-key :where-is-me.handler.core/find [_ {:keys [db]}]
   (fn [_]
