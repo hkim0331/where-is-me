@@ -8,9 +8,10 @@
 
 (def ^:private version "0.2.4")
 
-(defmethod ig/init-key :where-is-me.handler.core/version [_ _]
+;; display usage as html?
+(defmethod ig/init-key :where-is-me.handler.core/help [_ _]
   (fn [_]
-    [::response/ok {:version version}]))
+    [::response/ok (str "version:" version)]))
 
 ;; lazy-seq returns
 ;; (defn- shorten [ts]

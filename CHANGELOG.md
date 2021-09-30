@@ -3,8 +3,17 @@
 where is hkimura, now?
 
 ## Unreleased
+* 404? 401?
+  with
+  (catch Exception e
+    [::response/unauthorized (.getMessage e)])))
+  but returns 404. Exception occurs anywhere else?
+* help
 
-## 0.2.4
+## 0.2.5-SNAPSHOT
+
+
+## 0.2.4 - 2021-09-30
 ### Added
 * session by using httpie facility.
   must keep ~/.config/httpie/sessions secretly.
