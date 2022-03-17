@@ -3,12 +3,15 @@
 where is hkimura, now?
 
 ## Unreleased
-* auth or password?
-  httpie's session?
+* 404? 401?
+  with
+  (catch Exception e
+    [::response/unauthorized (.getMessage e)])))
+  but returns 404. Exception occurs anywhere else?
+* help
 
   http --session=${SESSION} ${URI} loc=home API-Token:${TOKEN}
 
-  see ~/.config/httpie/sessions
 
 * use $0 as URI? not impossible.
 
