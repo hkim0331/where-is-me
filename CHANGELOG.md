@@ -6,9 +6,11 @@ where is hkimura, now?
 * auth or password?
   httpie's session?
 
-  http --session=ses https://w.hkim.jp/ loc=home API-Token:123
+  http --session=${SESSION} ${URI} loc=home API-Token:${TOKEN}
 
   see ~/.config/httpie/sessions
+
+* use $0 as URI? not impossible.
 
 ## 0.2.3-SNAPSHOT
 
