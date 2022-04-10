@@ -8,7 +8,10 @@ where is hkimura, now?
     [::response/unauthorized (.getMessage e)])))
   willreturn 404. Exception occurs anywhere else?
 
-## 0.2.5
+## 0.3.0 - 2022-04-10
+* tag 打ち直し。
+
+## 0.25.0 - 2022-04-10
 ### Changed
 * 環境変数 W_I_M で secret の照合をする。
 ### Added
