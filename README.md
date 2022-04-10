@@ -6,6 +6,11 @@
 whoami コマンドがあるんだから、
 プロジェクト名は where-am-i がよかったか？
 
+## httpie session
+
+httpie はセッション情報を .httpie/session/
+see client.sh
+
 ## mkdir db
 
 リポジトリをクローンしたら、mkdir db しないと sqlite3 のデータベースを作れない。

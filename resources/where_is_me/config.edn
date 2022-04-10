@@ -20,6 +20,8 @@ timestamp TIMESTAMP DEFAULT (datetime('now','localtime')))"]
             [:get "/"] [:where-is-me.handler.core/html]
             [:get "/loc"] [:where-is-me.handler.core/find]
             [:get "/locs"] [:where-is-me.handler.core/lists]
+
+            ;; example, /locs/2022-04
             [:get "/locs/" param] [:where-is-me.handler.core/list param]
 
             [:get "/help"] [:where-is-me.handler.core/help]}}
