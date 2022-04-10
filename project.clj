@@ -1,4 +1,4 @@
-(defproject where-is-me "0.2.4"
+(defproject where-is-me "0.25.0"
   :description "Let students know where I am."
   :url "https://github.com/hkim0331/where-is-me.git"
   :min-lein-version "2.0.0"
@@ -8,7 +8,9 @@
                  [duct/module.logging "0.5.0"]
                  [duct/module.sql "0.6.1"]
                  [duct/module.web "0.7.3"]
+                 [hiccup "1.0.5"]
                  [org.xerial/sqlite-jdbc "3.36.0.3"]
+                 [ring/ring-anti-forgery "1.3.0"]
                  ;;
                  [environ "1.2.0"]]
   :plugins [[duct/lein-duct "0.12.3"]]

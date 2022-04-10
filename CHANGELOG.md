@@ -3,14 +3,23 @@
 where is hkimura, now?
 
 ## Unreleased
+* 404? 401?
+  (catch Exception e
+    [::response/unauthorized (.getMessage e)])))
+  willreturn 404. Exception occurs anywhere else?
 
-## 0.2.4
+## 0.2.5
+### Changed
+* 環境変数 W_I_M で secret の照合をする。
 ### Added
-* session by using httpie facility.
-  must keep ~/.config/httpie/sessions secretly.
+* simpe authorizing endpoint from where can send current location.
+  had better `w.hkim.jp` from smart-phones.
+* created ~/.config/httpie/sessions/w.hkim.jp on m1 and m2 by
+ `w.hkim.jp at-home`
+ on m3, the file is ~/.httpie/sessions/w.hkim.jp
+* use $0 as URI? not impossible.
 
-## 0.2.3 - 2021-09-30
-* works without auth.
+## 0.2.3-SNAPSHOT
 
 ## 0.2.2 - 2021-09-27
 ### Changed

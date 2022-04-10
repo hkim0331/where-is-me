@@ -16,19 +16,19 @@
 (extend-protocol Locations
   duct.database.sql.Boundary
   (create-loc [{db :spec} loc]
-          (let [ret (jdbc/insert! db :locations {:location loc})]
-            (-> ret first)))
+    (let [ret (jdbc/insert! db :locations {:location loc})]
+      (-> ret first)))
 
   (find-loc [{db :spec}]
-        (let [ret (jdbc/query db ["select * from locations order by id desc"])]
-          (-> ret first)))
+    (let [ret (jdbc/query db ["select * from locations order by id desc"])]
+      (-> ret first)))
 
   ;; FIXME: want to use `like ?%`
   (list-loc [{db :spec} pat]
-        (let [ret (jdbc/query db ["select * from locations order by id"])]
-          (->> ret
-               (filter #(starts-with? (:timestamp %) pat)))))
+    (let [ret (jdbc/query db ["select * from locations order by id"])]
+      (->> ret
+           (filter #(starts-with? (:timestamp %) pat)))))
 
   (lists-loc [{db :spec}]
-         (let [ret (jdbc/query db ["select * from locations order by id"])]
-           ret)))
+    (let [ret (jdbc/query db ["select * from locations order by id"])]
+      ret)))
