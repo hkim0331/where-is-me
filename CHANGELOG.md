@@ -7,15 +7,14 @@ where is hkimura, now?
   (catch Exception e
     [::response/unauthorized (.getMessage e)])))
   willreturn 404. Exception occurs anywhere else?
-* create authorizing endpoint from where can send current location.
+
+## 0.2.5
+### Added
+* simpe authorizing endpoint from where can send current location.
   had better `w.hkim.jp` from smart-phones.
-
-
-## 0.2.5-SNAPSHOT
 * created ~/.config/httpie/sessions/w.hkim.jp on m1 and m2 by
  `w.hkim.jp at-home`
  on m3, the file is ~/.httpie/sessions/w.hkim.jp
-
 * use $0 as URI? not impossible.
 
 ## 0.2.3-SNAPSHOT
