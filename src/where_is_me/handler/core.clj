@@ -10,7 +10,7 @@
    [where-is-me.boundary.locations :as locs]
    [where-is-me.view :as view]))
 
-(def ^:private version "0.2.5-SNAPSHOT")
+(def ^:private version "0.25.0")
 
 ;; display usage as html?
 (defmethod ig/init-key :where-is-me.handler.core/help [_ _]
@@ -64,13 +64,17 @@
      [:h2 "w.hkim.jp/l"]
      (form-to [:post "/l"]
               (anti-forgery-field)
-              [:p "secret " (password-field "secret")]
-              [:p "location " (text-field "loc")]
-              [:p (submit-button "submit")]))))
+              [:div {:class "row align-items-first"}
+               [:div {:class "col-1"} "location:"]
+               [:div {:class "col-2"} (text-field "loc")]]
+              [:div {:class "row align-items-first"}
+               [:div {:class "col-1"} "secret:"]
+               [:div {:class "col-2"} (password-field "secret")]]
+              [:div (submit-button "update")]))))
 
 (defmethod ig/init-key :where-is-me.handler.core/l-post [_ {:keys [db]}]
   (fn [{{:keys [secret loc]} :params}]
-    (if (= secret "pelikano")
+    (if (= secret (env :w-i-m))
       (do
         (locs/create-loc db loc)
         [::response/found "/"])
