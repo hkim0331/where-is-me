@@ -1,4 +1,4 @@
-(defproject where-is-me "0.25.0"
+(defproject where-is-me "0.3.0"
   :description "Let students know where I am."
   :url "https://github.com/hkim0331/where-is-me.git"
   :min-lein-version "2.0.0"

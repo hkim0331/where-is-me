@@ -10,7 +10,7 @@
    [where-is-me.boundary.locations :as locs]
    [where-is-me.view :as view]))
 
-(def ^:private version "0.25.0")
+(def ^:private version "0.3.0")
 
 ;; display usage as html?
 (defmethod ig/init-key :where-is-me.handler.core/help [_ _]
