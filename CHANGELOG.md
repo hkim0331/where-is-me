@@ -16,13 +16,9 @@ where is hkimura, now?
  `w.hkim.jp at-home`
  on m3, the file is ~/.httpie/sessions/w.hkim.jp
 
-## 0.2.4 - 2021-09-30
-### Added
-* session by using httpie facility.
-  must keep ~/.config/httpie/sessions secretly.
+* use $0 as URI? not impossible.
 
-## 0.2.3 - 2021-09-30
-* works without auth.
+## 0.2.3-SNAPSHOT
 
 ## 0.2.2 - 2021-09-27
 ### Changed

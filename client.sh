@@ -10,5 +10,5 @@ SESSION=where-is-me
 if [ -z "$1" ]; then
   http --body ${URL}/loc
 else
-  http --session ${SESSION} --body ${URL}/ loc="$*"
+  http --body --session where-is-me ${URL}/ loc="$*"
 fi
