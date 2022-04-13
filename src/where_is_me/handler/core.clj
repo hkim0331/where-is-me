@@ -10,7 +10,7 @@
    [where-is-me.boundary.locations :as locs]
    [where-is-me.view :as view]))
 
-(def ^:private version "0.3.0")
+(def ^:private version "0.3.1")
 
 ;; display usage as html?
 (defmethod ig/init-key :where-is-me.handler.core/help [_ _]
@@ -31,11 +31,11 @@
 (defmethod ig/init-key :where-is-me.handler.core/html [_ {:keys [db]}]
   (fn [_]
     (let [{:keys [timestamp location]} (locs/find-loc db)]
-      (view/html
-       [:h4 "himura は今、"]
-       [:div (shorten timestamp) ", " location]
-       [:hr]
-       [:div "w.hkim.jp"]))))
+       (view/html
+        [:h4 "hkimura は今、"]
+        [:div (shorten timestamp) ", " location]
+        [:hr]
+        [:div "w.hkim.jp"]))))
 
 (defmethod ig/init-key :where-is-me.handler.core/create [_ {:keys [db]}]
   (fn [{:as req [_ loc] :ataraxy/result}]
@@ -81,5 +81,3 @@
       (view/html
        [:h2 "w.hkim.jp/l"]
        [:p {:style {:color "red"}} "secret does not match"]))))
-
-
