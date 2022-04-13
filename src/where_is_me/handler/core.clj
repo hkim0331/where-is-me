@@ -6,7 +6,7 @@
             [where-is-me.boundary.locations :as locs]
             [where-is-me.view :as view]))
 
-(def ^:private version "0.2.4")
+(def ^:private version "0.3.1")
 
 (defmethod ig/init-key :where-is-me.handler.core/version [_ _]
   (fn [_]
@@ -27,7 +27,7 @@
   (fn [_]
     (let [{:keys [timestamp location]} (locs/find-loc db)]
        (view/html
-        [:h4 "himura は今、"]
+        [:h4 "hkimura は今、"]
         [:div (shorten timestamp) ", " location]
         [:hr]
         [:div "w.hkim.jp"]))))
