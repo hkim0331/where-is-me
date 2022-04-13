@@ -1,6 +1,7 @@
 {:duct.profile/base
  {:duct.core/project-ns where-is-me
-
+  :duct.database/sql
+  {:connection-uri "jdbc:sqlite:db/dev.sqlite"}
   :duct.migrator/ragtime
   {:migrations [#ig/ref :where-is-me.migration/create-locations]}
 
@@ -13,7 +14,7 @@ timestamp TIMESTAMP DEFAULT (datetime('now','localtime')))"]
 
   :duct.router/ataraxy
   {:routes {;;[:get "/example"] [:where-is-me.handler/example]
-            ;;
+             ;;
             [:post "/" {{:keys [loc]} :body-params}]
             [:where-is-me.handler.core/create loc]
 
@@ -21,7 +22,7 @@ timestamp TIMESTAMP DEFAULT (datetime('now','localtime')))"]
             [:get "/loc"] [:where-is-me.handler.core/find]
             [:get "/locs"] [:where-is-me.handler.core/lists]
 
-            ;; example, /locs/2022-04
+             ;; example, /locs/2022-04
             [:get "/locs/" param] [:where-is-me.handler.core/list param]
 
             [:get "/l"]  [:where-is-me.handler.core/l]
@@ -30,21 +31,21 @@ timestamp TIMESTAMP DEFAULT (datetime('now','localtime')))"]
             [:get "/help"] [:where-is-me.handler.core/help]}}
 
 
-  ;;:where-is-me.handler/example {:db #ig/ref :duct.database/sql}
+   ;;:where-is-me.handler/example {:db #ig/ref :duct.database/sql}
 
   :where-is-me.handler.core/help {}
   :where-is-me.handler.core/l    {}
   :where-is-me.handler.core/l-post {:db #ig/ref :duct.database/sql}
-  
+
   :where-is-me.handler.core/html   {:db #ig/ref :duct.database/sql}
   :where-is-me.handler.core/create {:db #ig/ref :duct.database/sql}
   :where-is-me.handler.core/find   {:db #ig/ref :duct.database/sql}
   :where-is-me.handler.core/list   {:db #ig/ref :duct.database/sql}
   :where-is-me.handler.core/lists  {:db #ig/ref :duct.database/sql}}
 
- :duct.profile/dev   #duct/include "dev"
+ :duct.profile/dev #duct/include "dev"
  :duct.profile/local #duct/include "local"
- :duct.profile/prod  {}
+ :duct.profile/prod {}
 
  :duct.module/logging {}
  :duct.module.web/api {}
