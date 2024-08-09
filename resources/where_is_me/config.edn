@@ -34,6 +34,8 @@ timestamp TIMESTAMP DEFAULT (datetime('now','localtime')))"]
    ;;:where-is-me.handler/example {:db #ig/ref :duct.database/sql}
 
   :where-is-me.handler.core/help {}
+
+  ;; 0.3.0 2022-04-10
   :where-is-me.handler.core/l    {}
   :where-is-me.handler.core/l-post {:db #ig/ref :duct.database/sql}
 
