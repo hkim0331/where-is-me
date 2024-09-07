@@ -9,7 +9,7 @@
     [:meta {:charset "utf-8"}]
     [:meta
      {:name "viewport"
-      :content "width=device-width ,initial-scale=1,shink-to-fit=no"}]
+      :content "width=device-width, initial-scale=1, shink-to-fit=no"}]
     (include-css
      "https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css")]
    [:body
