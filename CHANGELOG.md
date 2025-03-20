@@ -14,6 +14,7 @@ where is hkimura, now?
 ## 0.25.0 - 2022-04-10
 ### Changed
 * 環境変数 W_I_M で secret の照合をする。
+
 ### Added
 * simpe authorizing endpoint from where can send current location.
   had better `w.hkim.jp` from smart-phones.
